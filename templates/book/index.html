@@ -1,0 +1,62 @@
+{% extends 'inc/nav.html' %}
+{% load static %}
+
+{% block contents %}
+    <h1 class="text-center text-danger"> Book Index Page</h1>
+    <div class="mb-5"><a href="{% url 'createbook' %}" class="btn btn-success float-end mx-5" >Create</a>
+    </div>
+     <br><br>
+    <div class="container">
+      <div class="row mb-5">
+        {% for item in book %}
+        <div class="col-4 mb-2">
+          <div class="card" style="width: 18rem;">
+            <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <h6 class="card-subtitle mb ">{{ item.author }}</h6>
+                    <a href="{% url 'readbook' book_id=item.id %}" class="btn btn-primary">Read</a>
+                    <a href="{% url 'editbook' book_id=item.id %}" class="btn btn-warning">
+                    Edit</a>
+                    <a href="{% url 'deletebook' book_id=item.id %}" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+  
+    {% comment %} <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Category</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for item in book %} 
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.author }}</td>
+            <td>{{ item.isbn }}</td>
+            <td>{{ item.category }}</td>
+            <td>
+              <button type="button" class="btn btn-success"><a href="{% url 'createbook' %}" class="btn btn-success" >Create</a></button>
+              <button type="button" class="btn btn-primary"><a href="{% url 'readbook' book_id=item.id %}" class="btn btn-primary">Read</a></button>
+              
+              <button type="button" class="btn btn-warning"><a href="{% url 'editbook' %}" class="btn btn-warning" >
+                Edit</a></button>
+              <button type="button" class="btn btn-danger"><a href="{% url 'deletebook' book_id=item.id %}" class="btn btn-danger">Delete</a></button>
+            </td>
+         
+          </tr>
+        {% endfor %}  
+        </tbody>
+      </table> {% endcomment %}
+  
+{% endblock contents %}

@@ -1,0 +1,15 @@
+{% extends 'inc/nav.html' %}
+{% load static %}
+{% block contents %}
+<div>
+    <h1 class="m-5 text-center text-capitalize"> Are yo sure you wanna delete 
+        {{ book.name }} written by {{ book.author }} ?
+    </h1>
+ <form method="POST" action="{% url 'deletebook' book.id %}" class="text-center m-5">
+    {% csrf_token %}
+    <input type="submit" value="Delete" class="text-center btn btn-danger">
+    <a href="{% url 'book' %}" class="btn btn-success"> Cancel</a>
+ </form>
+
+</div>  
+{% endblock contents %}

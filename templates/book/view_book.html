@@ -1,0 +1,15 @@
+{% extends 'inc/nav.html' %}
+{% load static %}
+
+{% block contents %}
+<div class="card m-5" style="background-color:yellow">
+    <div class="m-5 text-center card-body">
+      <h5 class="card-title">Book Detail View</h5>
+      <h6 class="card-subtitle mb-2 text-danger">{{ book.name }}</h6>
+      <h6 class="card-subtitle mb-2 text-danger">{{ book.isbn }}</h6>
+      <h6 class="card-subtitle mb-2 text-danger">{{ book.category }}</h6>
+      <p class="card-text text-danger">{{ book.author}}</p>
+    </div>
+  </div>
+  
+{% endblock contents %}
